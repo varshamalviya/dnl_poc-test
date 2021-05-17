@@ -1,0 +1,3 @@
+#SAM build and deploy
+bucket="`echo dnl_lambda_repo | tr 'A-Z' 'a-z'`"
+sam build && sam deploy --stack-name "dnl_lambda_repo" --parameter-overrides "ParameterKey=project_name,ParameterValue=dnl_lambda_repo,ParameterKey=aws_region,ParameterValue=ap-south-1,ParameterKey=function_name,ParameterValue=replace_string" --s3-bucket "bucket-$bucket" --s3-prefix "dnl_lambda_repo" --region "ap-south-1" --capabilities "CAPABILITY_IAM" --no-confirm-changeset

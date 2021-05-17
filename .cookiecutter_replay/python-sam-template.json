@@ -1,0 +1,8 @@
+{
+  "cookiecutter": {
+    "project_name": "dnl_lambda_repo",
+    "function_name": "replace_string",
+    "aws_region": "ap-south-1",
+    "_template": "https://github.com/nirmash/python-sam-template.git"
+  }
+}

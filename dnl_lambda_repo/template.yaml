@@ -1,0 +1,34 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  dnl_lambda_repo
+  
+  Sample SAM Template for dnl_lambda_repo
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 5
+
+Resources:
+  replace_string:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: dnl_lambda_repo/
+      Handler: app.lambda_handler
+      Runtime: python3.8
+      Policies:
+        - AWSLambdaBasicExecutionRole
+      Tracing: Active # https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
+      Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
+        Variables:
+          KEY1: VALUE
+Outputs:
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  replace_string:
+    Description: "Lambda Function ARN"
+    Value: !GetAtt replace_string.Arn
+  replace_stringIamRole:
+    Description: "Implicit IAM Role created for dnl_lambda_repo function"
+    Value: !GetAtt replace_stringRole.Arn
